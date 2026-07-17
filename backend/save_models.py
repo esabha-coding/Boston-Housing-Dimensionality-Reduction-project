@@ -7,7 +7,9 @@ from sklearn.decomposition import PCA
 from sklearn.linear_model import Ridge
 from sklearn.preprocessing import PolynomialFeatures
 
-df = pd.read_csv('dataset/boston_housing.csv')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CSV_PATH = os.path.join(BASE_DIR, 'dataset', 'boston_housing.csv')
+df = pd.read_csv(CSV_PATH)
 feature_names = ['crim','zn','indus','chas','nox','rm','age',
                  'dis','rad','tax','ptratio','b','lstat']
 data = df[feature_names].values
