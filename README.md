@@ -1,10 +1,10 @@
-# 🏠 Boston Housing — Dimensionality Reduction & Price Prediction
+# Boston Housing — Dimensionality Reduction & Price Prediction
 
 > An end-to-end Machine Learning project exploring PCA, t-SNE, Ridge Regression, and Polynomial Feature Engineering on the classic Boston Housing dataset — paired with a modern React dashboard for interactive visualization and live predictions.
 
 ---
 
-## 📸 Project Highlights
+## Project Highlights
 
 | Feature | Detail |
 |---------|--------|
@@ -17,7 +17,7 @@
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Dimensionality & Features Boston Housing/
@@ -73,7 +73,7 @@ Dimensionality & Features Boston Housing/
 
 ---
 
-## 🔬 Machine Learning Pipeline
+## Machine Learning Pipeline
 
 ### Dataset
 
@@ -161,7 +161,7 @@ PolynomialFeatures(degree=2, include_bias=False)
 
 ---
 
-## 🖥️ Frontend Dashboard
+## Frontend Dashboard
 
 The React dashboard provides 4 pages:
 
@@ -186,7 +186,7 @@ The React dashboard provides 4 pages:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -263,11 +263,11 @@ npm run dev
 
 Open **http://localhost:5173** in your browser.
 
-> ⚡ **Offline mode:** The frontend works even without the backend — all charts fall back to realistic mock data automatically.
+>  **Offline mode:** The frontend works even without the backend — all charts fall back to realistic mock data automatically.
 
 ---
 
-## 🎨 Design System
+## Design System
 
 | Token | Color | Usage |
 |-------|-------|-------|
@@ -279,7 +279,7 @@ Open **http://localhost:5173** in your browser.
 
 ---
 
-## 📊 Results Summary
+## Results Summary
 
 ```
 ╔═══════════════════════════════════════════════════════════╗
@@ -295,7 +295,7 @@ Open **http://localhost:5173** in your browser.
 
 ---
 
-## 📚 References
+## References
 
 - [Boston Housing Dataset (CMU)](http://lib.stat.cmu.edu/datasets/boston)
 - [scikit-learn — PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
@@ -306,7 +306,7 @@ Open **http://localhost:5173** in your browser.
 
 ---
 
-## ⚠️ Ethical Note on Dataset
+## Ethical Note on Dataset
 
 The original `sklearn.datasets.load_boston` was deprecated because the dataset contains a feature (`B`) that is a proxy for racial composition of neighbourhoods, which raises ethical concerns about using such data in predictive modelling. This project loads the raw data directly and acknowledges this concern.
 
