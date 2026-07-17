@@ -1,0 +1,61 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.pyw
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+*.ipynb
+
+# ===== ML Models (can be large) =====
+model/*.pkl
+model/*.joblib
+model/*.h5
+model/*.pt
+model/*.pth
+
+# ===== Node / Frontend =====
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+dist/
+.cache/
+
+# ===== Environment files =====
+.env
+.env.local
+.env.*.local
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== IDE / Editor =====
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+pyrefly.toml
+
+# ===== Logs =====
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== Misc =====
+*.swp
+*.swo
+*~
