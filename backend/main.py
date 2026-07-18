@@ -20,20 +20,29 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Paths
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_DIR = os.path.join(BASE_DIR, 'model')
+MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model')
 
-# Load models and pre-computed components
-print("Loading saved models and pre-computed components...")
-ridge_model_poly = joblib.load(os.path.join(MODEL_DIR, 'ridge_poly.joblib'))
-poly = joblib.load(os.path.join(MODEL_DIR, 'poly_transformer.joblib'))
-feature_names = joblib.load(os.path.join(MODEL_DIR, 'feature_names.joblib'))
-data_train_pca = joblib.load(os.path.join(MODEL_DIR, 'data_train_pca.joblib'))
-data_train_tsne = joblib.load(os.path.join(MODEL_DIR, 'data_train_tsne.joblib'))
-target_train = joblib.load(os.path.join(MODEL_DIR, 'target_train.joblib'))
-data = joblib.load(os.path.join(MODEL_DIR, 'data.joblib'))
-target = joblib.load(os.path.join(MODEL_DIR, 'target.joblib'))
+ridge_no_pca = joblib.load(os.path.join(MODEL_DIR, 'ridge_no_pca.joblib'))
+ridge_pca    = joblib.load(os.path.join(MODEL_DIR, 'ridge_pca.joblib'))
+ridge_poly   = joblib.load(os.path.join(MODEL_DIR, 'ridge_poly.joblib'))
+pca_transformer  = joblib.load(os.path.join(MODEL_DIR, 'pca_transformer.joblib'))
+poly_transformer = joblib.load(os.path.join(MODEL_DIR, 'poly_transformer.joblib'))
+feature_names    = joblib.load(os.path.join(MODEL_DIR, 'feature_names.joblib'))
+splits           = joblib.load(os.path.join(MODEL_DIR, 'splits.joblib'))
+
+data_train     = splits['data_train']
+data_test      = splits['data_test']
+target_train   = splits['target_train']
+target_test    = splits['target_test']
+data_train_pca = splits['data_train_pca']
+data_test_pca  = splits['data_test_pca']
+data_train_tsne = splits['data_train_tsne']
+
+# Reconstruct full dataset for the explorer
+data = np.vstack([data_train, data_test])
+target = np.concatenate([target_train, target_test])
+
+print("All models loaded successfully.")
 
 # Ensure feature names are uppercase for matching
 feature_names = [f.upper() for f in feature_names]
@@ -67,9 +76,9 @@ def predict(input_data: PredictionInput):
         input_data.PTRATIO, input_data.B, input_data.LSTAT
     ]])
     # Apply polynomial expansion (degree 2)
-    x_poly = poly.transform(x_input)
+    x_poly = poly_transformer.transform(x_input)
     # Run prediction
-    pred = ridge_model_poly.predict(x_poly)[0]
+    pred = ridge_poly.predict(x_poly)[0]
     return {"predicted_price": float(pred)}
 
 @app.get("/pca")
