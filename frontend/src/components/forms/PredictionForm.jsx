@@ -35,11 +35,15 @@ export default function PredictionForm({ toast }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('API URL:', import.meta.env.VITE_API_URL)
+    console.log('Submitting prediction...', values)
     try {
       await predict(values)
+      console.log('Prediction complete!')
       toast?.success('Prediction complete!')
-    } catch {
-      toast?.error(error || 'Backend offline — please start the FastAPI server.')
+    } catch (err) {
+      console.error('Prediction error:', err)
+      toast?.error(err.userMessage || err.message || 'Backend offline — please start the FastAPI server.')
     }
   }
 
