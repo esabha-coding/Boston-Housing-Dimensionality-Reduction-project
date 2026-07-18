@@ -116,6 +116,13 @@ export default function PredictionForm({ toast }) {
           <button type="button" onClick={handleReset} className="btn-secondary">Reset to Defaults</button>
         </div>
 
+        {loading && (
+          <div className="flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400 mb-6 animate-pulse">
+            <span className="w-2 h-2 rounded-full bg-amber-500" />
+            Waking up backend server, please wait up to 60 seconds...
+          </div>
+        )}
+
         {/* Result */}
         <AnimatePresence>
           {result !== null && (
